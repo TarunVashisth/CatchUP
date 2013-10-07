@@ -1,4 +1,4 @@
-package org.catchup;
+package src.test.java.org.catchup;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

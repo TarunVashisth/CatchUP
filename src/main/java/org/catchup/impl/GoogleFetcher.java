@@ -20,6 +20,9 @@ public class GoogleFetcher implements Fetcher{
 
 	Logger logger = LoggerFactory.getLogger(App.class);
 
+	/**
+	 * Builds a Query, Sends to google api and retrieves the data from there.
+	 */
 	public JSONObject Fetch(Query query) throws IOException, JSONException {
 		URL url = new URL(query.returnQuery());
 		URLConnection connection = url.openConnection();

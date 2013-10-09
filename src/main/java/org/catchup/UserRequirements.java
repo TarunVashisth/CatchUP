@@ -1,5 +1,4 @@
 package org.catchup;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -66,6 +65,13 @@ public class UserRequirements {
 		else
 			throw new IllegalArgumentException("Range is Negative, please provide a positive number!!!");
 	}
+	
+	
+	//TODO What about other requirements like language, geo location , results per page?
+	//Another constructor which takes another Profile class and creates an object of UserRequirements.
+	//What about different sub options of topic?
+	//We can use Builder Pattern?
+	
 	/**
 	 * 
 	 * @param query

@@ -12,7 +12,7 @@ public interface GoogleConstants {
 	public static final String GO_QUERY= "q";
 	public static final String GO_USER_IP="userip";
 	
-	
+	//Adding constants for UserRequirements class
 	public static final String DDEFAULT_HOST_LANGUAGE="en";
 	public static final String DDEFAULT_USER_LOCATION="us";
 	public static final String DDEFAULT_NEWS_EDITION="us";

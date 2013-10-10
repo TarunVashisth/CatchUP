@@ -1,9 +1,11 @@
 package org.catchup;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
-
+/**
+ * 
+ * @author ayubi
+ *
+ */
 public class UserRequirements {
 
 	/**
@@ -283,7 +285,7 @@ public class UserRequirements {
 	//Another constructor which takes another Profile class and creates an object of UserRequirements.
 	//What about different sub options of topic?
 	//We can use Builder Pattern?
-	
+	//ref link:http://stackoverflow.com/questions/328496/when-would-you-use-the-builder-pattern
 	
 	/**
 	 * Testing the above methods

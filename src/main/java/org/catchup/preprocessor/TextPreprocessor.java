@@ -1,14 +1,5 @@
 package org.catchup.preprocessor;
 public class TextPreprocessor {
-
-	
-	String inputText;
-	String outputText;
-	
-	public TextPreprocessor()
-	{
-		
-	}
 	
 	/**
 	 * 
@@ -16,16 +7,12 @@ public class TextPreprocessor {
 	 * from the StopwordsRemover class and stemmed by calling getResults method of the Stemmer class.
 	 * @return outputText, stopwords removed and stemmed.
 	 */
-	public String getPreprocessedText(String input)
+	public static String getPreprocessedText(String input)
 	{
-		
-		inputText=input;
-		StopwordsRemover str=new StopwordsRemover(inputText);
+		StopwordsRemover str=new StopwordsRemover(input);
 		String temp=str.removeStopwords();
-		System.out.println(temp);
-		
-		outputText=Stemmer.getResults(temp);
-		return outputText;
+		System.out.println(temp);		
+		return Stemmer.getResults(temp);
 	}
 	
 	

@@ -4,15 +4,13 @@ package org.catchup.preprocessor;
 
 public class Stemmer
 {  private char[] b;
-   private int i,     /* offset into b */
-               i_end, /* offset to end of stemmed word */
+   private int i=0,     /* offset into b */
+               i_end=0, /* offset to end of stemmed word */
                j, k;
    private static final int INC = 50;
                      /* unit of size whereby b is increased */
    public Stemmer()
    {  b = new char[INC];
-      i = 0;
-      i_end = 0;
    }
 
    /**

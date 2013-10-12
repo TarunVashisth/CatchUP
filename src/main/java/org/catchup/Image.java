@@ -5,7 +5,7 @@ package org.catchup;
  * @author ayubi
  *
  */
-public class Image {
+public abstract class Image {
 
 	private String title;
 	private String url;

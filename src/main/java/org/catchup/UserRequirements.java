@@ -12,9 +12,9 @@ public class UserRequirements {
 	 * Required arguments 
 	 */
 	
-	String queryString;
-	Date toDate;
-	Date fromDate;
+	private String queryString;
+	private Date toDate;
+	private Date fromDate;
 	
 	
 	/**
@@ -42,15 +42,59 @@ public class UserRequirements {
 	 * userip:""
 	 */
 
-	String hostLanguage;
-	String location;
-	String newsEdition;
-	long resultsPerPage;
-	String resultsOrdering;
-	long startIndex;
-	String topicQuantifier;
-	String userip;
+	private String hostLanguage;
+	private String location;
+	private String newsEdition;
+	private long resultsPerPage;
+	private String resultsOrdering;
+	private long startIndex;
+	private String topicQuantifier;
+	private String userip;
 	
+	public String getQueryString() {
+		return queryString;
+	}
+
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public Date getFromDate() {
+		return fromDate;
+	}
+
+	public String getHostLanguage() {
+		return hostLanguage;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public String getNewsEdition() {
+		return newsEdition;
+	}
+
+	public long getResultsPerPage() {
+		return resultsPerPage;
+	}	
+
+	public String getResultsOrdering() {
+		return resultsOrdering;
+	}
+
+	public long getStartIndex() {
+		return startIndex;
+	}
+
+	public String getTopicQuantifier() {
+		return topicQuantifier;
+	}
+
+	public String getUserip() {
+		return userip;
+	}
+
 	private UserRequirements(UserRequirementsBuilder builder){
 		//required
 		this.queryString=builder.queryString;
@@ -65,32 +109,28 @@ public class UserRequirements {
 		this.resultsOrdering=builder.resultsOrdering;
 		this.startIndex=builder.startIndex;
 		this.topicQuantifier=builder.topicQuantifier;
-		this.userip=builder.userip;
+		this.userip=builder.userip;		
 		
-		
-	}
-	
-	
-	
+	}	
 	
 	public static class UserRequirementsBuilder{
 		
 		//required
 		
-		String queryString;
-		Date toDate;
-		Date fromDate;
+		private String queryString;
+		private Date toDate;
+		private Date fromDate;
 		
 		
 		//optional
-		String hostLanguage=GoogleConstants.DDEFAULT_HOST_LANGUAGE;
-		String location=GoogleConstants.DDEFAULT_USER_LOCATION;
-		String newsEdition=GoogleConstants.DDEFAULT_NEWS_EDITION;
-		long resultsPerPage=GoogleConstants.DDEFAULT_RESULTS_PERPAGE;
-		String resultsOrdering=GoogleConstants.DDEFAULT_RESULTS_ORDERING;
-		long startIndex=GoogleConstants.DDEFAULT_START_INDEX;
-		String topicQuantifier=GoogleConstants.DDEFAULT_TOPIC_QUANTIFIER;
-		String userip=GoogleConstants.GO_USER_IP;
+		private String hostLanguage=GoogleConstants.GO_DEFAULT_HOST_LANGUAGE;
+		private String location=GoogleConstants.GO_DEFAULT_USER_LOCATION;
+		private String newsEdition=GoogleConstants.GO_DEFAULT_NEWS_EDITION;
+		private long resultsPerPage=GoogleConstants.GO_DEFAULT_RESULTS_PERPAGE;
+		private String resultsOrdering=GoogleConstants.GO_DEFAULT_RESULTS_ORDERING;
+		private long startIndex=GoogleConstants.GO_DEFAULT_START_INDEX;
+		private String topicQuantifier=GoogleConstants.GO_DEFAULT_TOPIC_QUANTIFIER;
+		private String userip=GoogleConstants.GO_USER_IP;
 		
 		
 		/**
@@ -101,18 +141,11 @@ public class UserRequirements {
 		 * @param d2	: The last date. d1<=d2 
 		 */
 		
-		public UserRequirementsBuilder(String query, Date d1,Date d2){
+		public UserRequirementsBuilder(String queryString, Date toDate,Date fromDate){
 			
-			if(!query.equals(""))
-				this.queryString=query.contains(" ")?queryCleaner(query):query;
-				else
-					throw new IllegalArgumentException("Query String is NULL!!!");
-			if(!(d1==null||d2==null)){
-				this.fromDate=d1;
-				this.toDate=d2;
-			}
-			else
-				throw new IllegalArgumentException("One of the dates supplied are NULL!!!");
+				this.queryString=queryString;
+				this.fromDate=toDate;
+				this.toDate=fromDate;
 			
 		}
 		
@@ -132,155 +165,64 @@ public class UserRequirements {
 		
 		public UserRequirementsBuilder(String query, long range){
 			
-			if(!query.equals(""))
-			this.queryString=query.contains(" ")?queryCleaner(query):query;
-			else
-				throw new IllegalArgumentException("Query String is NULL!!!");
-			
-			if(range>0){
-				long millisInADay=60*60*24*1000;
-				Date today=new Date();
-				this.toDate=today;
-				long todayInMillis=today.getTime();
-			
-				long fromDate=todayInMillis-range*(millisInADay);
-				this.fromDate=new Date(fromDate);
-		
-			}
-			else
-				throw new IllegalArgumentException("Date Range is Negative, please provide a positive number!!!");
+			this.queryString=query;
+			long millisInADay=60*60*24*1000;
+			Date today=new Date();
+			this.toDate=today;
+			long todayInMillis=today.getTime();
+			long millisOfFromDate=todayInMillis-(range*millisInADay);
+			this.fromDate=new Date(millisOfFromDate);
 		}
 		
-		
-		 public UserRequirementsBuilder hostLanguage(String hostLanguage) {
-		      if(!hostLanguage.equals(""))
+		public UserRequirementsBuilder hostLanguage(String hostLanguage) {
 			  this.hostLanguage = hostLanguage;
-		      
-		      else
-					throw new IllegalArgumentException("hostLanguage(Host language) is null!!!");
-
-		      
 		      return this;
 		    }
 
 		 public UserRequirementsBuilder location(String location) {
-		      if(!location.equals(""))
 			  this.location = location;
-
-		      else
-					throw new IllegalArgumentException("location(Host location) is null!!!");
-
-		      
 		      return this;
 		    }
+		 
 		 public UserRequirementsBuilder newsEdition(String newsEdition) {
-		      if(!newsEdition.equals(""))
 			  this.newsEdition = newsEdition;
-		      
-		      else
-					throw new IllegalArgumentException("newsEdition(News Edition) is null!!!");
-
 		      return this;
 		    }
 		 public UserRequirementsBuilder resultsPerPage(long resultsPerPage) {
-		      if(resultsPerPage>0)
 			  this.resultsPerPage = resultsPerPage;
-		      
-		      else
-					throw new IllegalArgumentException("resultsPerPage(results per page) is negative");
-
 		      return this;
 		    }
+		 
 		 public UserRequirementsBuilder resultsOrdering(String resultsOrdering) {
-		      if(!resultsOrdering.equals(""))
 			  this.resultsOrdering = resultsOrdering;
-		      
-		      else
-					throw new IllegalArgumentException("resultsOrdering(Results ordering) is null");
-
 		      return this;
 		    }
 
 		 public UserRequirementsBuilder startIndex(long startIndex) {
-		      if(startIndex>0)
 			  this.startIndex = startIndex;
-		      
-		      else
-					throw new IllegalArgumentException("startIndex (Start Index)is negative!!!");
-
 		      return this;
 		    }
 		 
 		 public UserRequirementsBuilder topicQuantifier(String topicQuantifier) {
-		      if(!topicQuantifier.equals(""))
 			  this.topicQuantifier = topicQuantifier;
-		      
-		      else
-					throw new IllegalArgumentException("topicQuantifier(Topic Quantifier) is null!!!");
-
 		      return this;
 		    }
 
 		 public UserRequirementsBuilder userip(String userip) {
-		      
-			 
-			 if(!(userip.equals(""))&&validateIP(userip))
 			  this.userip = userip;
-			 
-		      else
-					throw new IllegalArgumentException("userip (User IP Address) is either null or invalid!!!");
-
 		      return this;
 		    }
 		 
-		 
+		 	/**
+		 	 * Removing it since it is only required for Immuatable objects
+		 	 * @return
+		 	 */
 		    public UserRequirements build() {
 		      return new UserRequirements(this);
 		    }
 		
-		
-		  private boolean validateIP(String ip){
-			  String[] ipVals=userip.split(".");
-			  boolean result=true;
-			  
-			  if(ipVals.length!=4)
-				  result=false;
-			  for(String i:ipVals){
-				  Integer j=Integer.parseInt(i);
-				  if((j<0||j>255)){
-					  result=false;
-					  break;
-				  }
-				}
-			  
-				 return result;
-		  }
-		    
-		    
-		/**
-		 * 
-		 * @param query
-		 * @return cleaned query i.e the spaces replaced with %20
-		 */
-		private String queryCleaner(String query){
-			
-			String cleanedQuery=query.replaceAll(" ", "%20");
-			return cleanedQuery;
-		}
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	//TODO What about other requirements like language, geo location , results per page?
 	//Another constructor which takes another Profile class and creates an object of UserRequirements.
 	//What about different sub options of topic?

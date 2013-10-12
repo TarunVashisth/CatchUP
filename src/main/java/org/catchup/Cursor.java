@@ -14,8 +14,7 @@ public class Cursor {
 		this.pages=pages;
 		this.estimateResultCount=estimatedResultCount;
 		this.currentPageIndex=currentPageIndex;
-		this.moreResultsURL=moreResultsURL;
-		
+		this.moreResultsURL=moreResultsURL;		
 	}
 	
 	public Map<String,String> getPages(){

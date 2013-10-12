@@ -20,7 +20,7 @@ import java.util.Date;
  *
  */
 
-public class News implements Comparable<News>{
+public abstract class News implements Comparable<News>{
 
 	private String content;
 	private String publisher;
@@ -49,41 +49,14 @@ public class News implements Comparable<News>{
 				String language,
 				String title
 				) {
-		if(!content.equals(""))
+		
 			this.content=content;
-		else
-			throw new IllegalArgumentException("content (News Content) is null!!!");
-		
-		if(!publisher.equals(""))
 			this.publisher=publisher;
-		else
-			throw new IllegalArgumentException("publisher (News Publisher) is null!!!");
-		
-		if(!(dateOfPublication==null))
 			this.dateOfPublication=dateOfPublication;
-		else
-			throw new IllegalArgumentException("dateOfPublication (Publication Date) is null!!!");
-		
-		if(!url.equals(""))
 			this.url=url;
-		else
-			throw new IllegalArgumentException("url (News URL) is null!!!");
-		
-		if(!location.equals(""))
 			this.location=location;
-		else
-			throw new IllegalArgumentException("location (News Location) is null!!!");
-		
-		if(!language.equals(""))
 			this.language=language;
-		else
-			throw new IllegalArgumentException("language (News Language) is null!!!");
-
-		if(!title.equals(""))
 			this.title=title;
-		else
-			throw new IllegalArgumentException("title (News title) is null!!!");
-	
 	}
 
 	/**
@@ -142,16 +115,12 @@ public class News implements Comparable<News>{
 		builder.append(" News Content: "+this.content);
 		builder.append(" News Publisher: "+this.publisher);
 		builder.append(" Date of Publication: "+this.dateOfPublication);
-
 		builder.append(" News URL: "+this.url);
 		builder.append(" News Location: "+this.location);
 		builder.append(" News Language: "+this.language);
 		builder.append("}");
-		
-		return builder.toString();
-		
-		
-	}
+		return builder.toString();		
+		}
 	
 	 /**
 	   * Define equality of state.
@@ -177,8 +146,7 @@ public class News implements Comparable<News>{
 	    * 
 	    */
 	    @Override 
-	      public int hashCode() {
-	    
+	      public int hashCode() {    
 	      return this.toString().hashCode();
 	    }
 

@@ -44,8 +44,7 @@ public class GoogleNews extends News {
 			String clusterURL,
 			String searchClass,
 			Cursor cursor,
-			GoogleImage image
-			) {
+			GoogleImage image){
 		
 		super(content,publisher,dateOfPublication,url,location,language,title);
 		this.relatedNews=relatedNews;
@@ -57,13 +56,74 @@ public class GoogleNews extends News {
 		this.image=image;
 	}
 	
-	//Add Copy Constructor
-	//Add accessor(get) methods
-	//Add toString() method
-	//Add hashcode mthod, compareTo is fine no need to override
-	//Add exception handling for some fields
+	public GoogleNews(GoogleNews that){
+		super(that.getContent(),
+			that.getPublisher(),
+			that.getDateOfPublication(),
+			that.getUrl(),
+			that.getLocation(),
+			that.getLanguage(),
+			that.getTitle());
+			
+		this.relatedNews=that.getRelatedNews();
 		
+		this.titleNoFormating=that.getTitleNoFormatting();
+	
+		this.unescapedURL=that.getUnescapedURL();
+	
+		this.clusterURL=that.getClusterURL();
+	
+		this.searchClass=that.getSearchClass();
+	
+		this.cursor=that.getCursor();
+
+		this.image=that.getImage();
 		
+	
+	
+	}
+
+	public List<News> getRelatedNews(){
+		return this.relatedNews;
+	}
+	public String getTitleNoFormatting(){
+		return this.titleNoFormating;
+	}
+	public String getUnescapedURL(){
+		return this.unescapedURL;
+	}
+	public String getClusterURL(){
+		return this.clusterURL;
+	}
+	public String getSearchClass(){
+		return this.searchClass;
+	}
+	public Cursor getCursor(){
+		return this.cursor;
+	}
+	public GoogleImage getImage(){
+		return this.image;
+	}
+	
+	
+	@Override
+	public String toString(){
+		StringBuilder builder=new StringBuilder();
+		builder.append("{");
+		builder.append(super.toString());
 		
+		//GoogleNews Fields appended here
 		
+		builder.append(" Related News: "+this.relatedNews.toString());
+		builder.append(" Title No Formatting: "+this.titleNoFormating);
+		builder.append(" Unescaped URL: "+this.unescapedURL);
+		builder.append(" Cluster URL: "+this.clusterURL);
+		builder.append(" Search Class: "+this.searchClass);
+		builder.append(" Cursor: "+this.cursor.toString());
+		builder.append(" Image: "+this.image.toString());
+		
+		builder.append("}");
+		return builder.toString();		
+		}
+	
 }

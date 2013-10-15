@@ -28,4 +28,14 @@ public abstract class Image {
 	public String getPublisher(){
 		return publisher;
 	}
+	
+	public String toString(){
+		StringBuilder builder=new StringBuilder();
+		builder.append("{");
+		builder.append(" Image title: "+this.title);
+		builder.append(" Image URL: "+this.url);
+		builder.append(" Image Publisher: "+this.publisher);
+		builder.append("}");
+		return builder.toString();
+	}
 }

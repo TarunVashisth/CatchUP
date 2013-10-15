@@ -30,6 +30,16 @@ public class Cursor {
 	public String getMoreResultsURL(){
 		return moreResultsURL;
 	}
-	
+	public String toString(){
+		StringBuilder builder=new StringBuilder();
+		builder.append("{");
+		builder.append(" Pages: "+this.pages.toString());
+		builder.append(" Estimated Results Count: "+this.estimateResultCount);
+		builder.append(" Current Page Index: "+this.currentPageIndex);
+		builder.append(" More Results URL: "+this.moreResultsURL);
+		
+		builder.append("}");
+		return builder.toString();
+	}
 	
 }

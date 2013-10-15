@@ -22,13 +22,13 @@ import java.util.Date;
 
 public abstract class News implements Comparable<News>{
 
-	private String content;
-	private String publisher;
-	private Date dateOfPublication;
-	private String url;
-	private String location;
-	private String language;
-	private String title;
+	protected String content;
+	protected String publisher;
+	protected Date dateOfPublication;
+	protected String url;
+	protected String location;
+	protected String language;
+	protected String title;
 	
 	/**
 	 * 
@@ -73,7 +73,7 @@ public abstract class News implements Comparable<News>{
 		
 			this.dateOfPublication=that.getDateOfPublication();
 		
-			this.url=getUrl();
+			this.url=that.getUrl();
 		
 			this.location=that.getLocation();
 		

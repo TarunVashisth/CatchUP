@@ -2,6 +2,8 @@ package org.catchup;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.sling.commons.json.JSONObject;
+
 
 public class GoogleNews extends News {
 
@@ -54,6 +56,29 @@ public class GoogleNews extends News {
 		this.searchClass=searchClass;
 		this.cursor=cursor;
 		this.image=image;
+	}
+	
+	public GoogleNews(String content,
+			String publisher,
+			Date dateOfPublication,
+			String url,
+			String location,
+			String language,
+			String title
+			) {
+	
+		this.content=content;
+		this.publisher=publisher;
+		this.dateOfPublication=dateOfPublication;
+		this.url=url;
+		this.location=location;
+		this.language=language;
+		this.title=title;
+}
+	
+	public GoogleNews(JSONObject obj)
+	{
+		
 	}
 	
 	public GoogleNews(GoogleNews that){

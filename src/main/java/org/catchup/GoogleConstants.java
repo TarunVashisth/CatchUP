@@ -1,5 +1,6 @@
 package org.catchup;
 
+
 /**
  * 
  * @author vashisth
@@ -20,6 +21,17 @@ public interface GoogleConstants {
 	public static final String GO_DEFAULT_RESULTS_ORDERING="d";
 	public static final long GO_DEFAULT_START_INDEX=0;
 	public static final String GO_DEFAULT_TOPIC_QUANTIFIER="h";
+	public static final String GO_OUTPUT_RESPONSEDATA="responseData";
+	public static final String GO_OUTPUT_RESULTS="results";
+	public static final String GO_OUTPUT_CLUSTERURL="clusterUrl";
+	public static final String GO_OUTPUT_CONTENT="content";
+	public static final String GO_OUTPUT_PUBLISHER="publisher";
+	public static final String GO_OUTPUT_PUBLISHEDDATE="publishedDate";
+	public static final String GO_OUTPUT_URL="url";
+	public static final String GO_OUTPUT_LOCATION="location";
+	public static final String GO_OUTPUT_LANGUAGE="language";
+	public static final String GO_OUTPUT_TITLE="title";
+	
 	
 	
 }

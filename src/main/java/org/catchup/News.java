@@ -1,6 +1,8 @@
 package org.catchup;
 
 import java.util.Date;
+
+import org.apache.sling.commons.json.JSONObject;
 /**
  * 
  * @author ayubi
@@ -20,7 +22,7 @@ import java.util.Date;
  *
  */
 
-public abstract class News implements Comparable<News>{
+public class News implements Comparable<News>{
 
 	protected String content;
 	protected String publisher;
@@ -59,6 +61,13 @@ public abstract class News implements Comparable<News>{
 			this.title=title;
 	}
 
+	public News(){}
+	
+	public News(JSONObject obj)
+	{
+		
+	}
+	
 	/**
 	 * 
 	 * @param that Another news object, working as copy constructor
@@ -103,9 +112,6 @@ public abstract class News implements Comparable<News>{
 	public String getTitle(){
 		return this.title;
 	}
-	
-	
-	
 	
 	@Override
 	public String toString(){
